@@ -1,1 +1,5 @@
-graft_app.js.coffee
+angular.module("GraftApp", [
+	"GraftRouter",
+	"GraftCOntroller",
+	"GraftFactories"
+	])
