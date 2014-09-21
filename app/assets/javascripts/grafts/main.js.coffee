@@ -1,4 +1,4 @@
-angular.module("GraftApp", [
+angular.module("GraftsApp", [
 	"GraftRouter",
 	"GraftCtrls",
 	"GraftFactories"

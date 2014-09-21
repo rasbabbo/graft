@@ -1,6 +1,6 @@
 GraftCtrls = angular.module("GraftCtrls", [])
 
-class GraftCtrls
+class GraftsCtrl
 
 	constructor: (@scope, @User) ->
 		@greeting = "Fuck off motherscratchers!"
