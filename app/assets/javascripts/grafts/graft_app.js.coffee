@@ -1,5 +1,5 @@
 angular.module("GraftApp", [
 	"GraftRouter",
-	"GraftCOntroller",
+	"GraftCtrls",
 	"GraftFactories"
 	])

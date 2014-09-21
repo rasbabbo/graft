@@ -4,13 +4,13 @@ GraftFactories.factory("Graft", ["$http", ($http) ->
 	return {
 		all: () ->
 			console.log("geting something")
-			$http.get("/thegrafts.json").success (data) ->
+			$http.get("/users.json").success (data) ->
 				console.log(data)
 		,
 
 		create: (newGraft) ->
 			console.log(newGraft)
-			$http.post("thegrafts.json", (thegraft: newGraft))
+			$http.post("users.json", (user: newUser))
 
  		}
 ])

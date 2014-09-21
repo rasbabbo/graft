@@ -9,10 +9,10 @@ class Router
 		@routeProvider.
 			when "/",
 				templateUrl: "/graft_templates",
-				controller: "GraftCtrl as grafts"
+				controller: "GraftsCtrl as grafts"
 			.when "/grafts",
 				templateUrl: "/grafts_templates",
-				controller: "Grafts as grafts"
+				controller: "GraftsCtrl as grafts"
 
 			@locationProvider.html5Mode(true)
 
