@@ -7,7 +7,7 @@ class GraftsCtrl
 		@User.all()
 		return this
 
-	addGraft: (newUser) ->
+	addUser: (newUser) ->
 		@User.create(newUser)
 		.success (data) ->
 			console.log(data)

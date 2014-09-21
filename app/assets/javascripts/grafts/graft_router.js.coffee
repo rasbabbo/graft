@@ -1,17 +1,18 @@
-GraftRouter = angular.module("GraftRouter", ["ngRoute"])
+GraftRouter = angular.module("GraftRouter", [
+	"ngRoute"
+])
 
 class Router
 
 	constructor: (@routeProvider, @locationProvider) ->
 		console.log("Initializing Router")
 		console.log("setting up holmes!")
-
 		@routeProvider.
 			when "/",
 				templateUrl: "/graft_templates",
 				controller: "GraftsCtrl as grafts"
 			.when "/grafts",
-				templateUrl: "/grafts_templates",
+				templateUrl: "/graft_templates",
 				controller: "GraftsCtrl as grafts"
 
 			@locationProvider.html5Mode(true)

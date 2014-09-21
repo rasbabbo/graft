@@ -1,4 +1,4 @@
-class GraftTemplateController < ApplicationController
+class GraftTemplatesController < ApplicationController
 	layout :false
 	def index
 		render :index
