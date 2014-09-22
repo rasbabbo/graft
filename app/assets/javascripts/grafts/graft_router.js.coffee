@@ -1,5 +1,3 @@
-
-
 class Router
 
 	constructor: (@routeProvider, @locationProvider) ->
@@ -8,10 +6,10 @@ class Router
 		@routeProvider.
 			when "/",
 				templateUrl: "/graft_templates",
-				controller: "GraftsCtrl as grafts"
+				controller: "GraftCtrls as grafts"
 			.when "/grafts",
 				templateUrl: "/graft_templates",
-				controller: "GraftsCtrl as grafts"
+				controller: "GraftCtrls as grafts"
 
 			@locationProvider.html5Mode(true)
 
@@ -19,7 +17,7 @@ GraftRouter = angular.module("GraftRouter", [
 	"ngRoute"
 ])
 
-GraftRouter.config(["$routeProvider", "locationProvider", Router])
+GraftRouter.config(["$routeProvider", "$locationProvider", Router])
 
 GraftRouter.config(["$httpProvider", ($httpProvider) ->
 	$httpProvider.defaults.headers.common['X-CSRF-Token'] = $('meta[name=csrf-token]').attr('content')

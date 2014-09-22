@@ -1,9 +1,11 @@
-GraftCtrls = angular.module("GraftCtrls", [])
+GraftCtrls = angular.module("GraftCtrls", [
+	"ngResource"
+])
 
 class GraftsCtrl
 
 	constructor: (@scope, @User) ->
-		@greeting = "Fuck off motherscratchers!"
+		@greeting = "Hey off guys!"
 		@User.all()
 		return this
 
@@ -13,7 +15,7 @@ class GraftsCtrl
 			console.log(data)
 
 	sayHello: () ->
-		"crazy-ass beyotch"
+		"come an and work"
 
 
-GraftCtrls.controller("GraftsCtrl", ["$scope", "Graft", GraftsCtrl])
+GraftCtrls.controller("GraftCtrls", ["$scope", "User", GraftsCtrl])
