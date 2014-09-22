@@ -3,19 +3,17 @@ GraftCtrls = angular.module("GraftCtrls", [
 ])
 
 class GraftsCtrl
+	$scope.cids = []
 
-	constructor: (@scope, @User) ->
-		@greeting = "Hey you guys!"
-		@User.all()
-		return this
+	$scope.getCid = ->
+		$http.get("$http.get('http://opensecrets.org/api/?method=candIndustry&cid=N00007360&cycle=2012&apikey=372c032ce003d03628fd519bd97d5f7e").success (data) ->
+			$scope.cids = data
 
-	addUser: (newUser) ->
-		@User.create(newUser)
-		.success (data) ->
-			console.log(data)
-
-	sayHello: () ->
+	$sayHello: () ->
 		"come an and work"
 
+	executeSearch: (@scope, @query) ->
 
-GraftCtrls.controller("GraftCtrls", ["$scope", "User", GraftsCtrl])
+
+
+GraftCtrls.controller("GraftCtrls", ["$scope", "$http", GraftsCtrl])
