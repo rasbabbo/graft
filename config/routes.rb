@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
- root to: "grafts#index"
- resources :grafts, except: [:edit, :new]
- resources :graft_templates
+    resources :grafts, except: [:edit, :new]
 
+  match "*path", to: "grafts#index", via: "get"
+  
+  root to: "grafts#index"
 end
