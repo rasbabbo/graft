@@ -5,7 +5,7 @@ GraftCtrls = angular.module("GraftCtrls", [
 class GraftsCtrl
 
 	constructor: (@scope, @User) ->
-		@greeting = "Hey off guys!"
+		@greeting = "Hey you guys!"
 		@User.all()
 		return this
 

@@ -13,8 +13,10 @@ GraftFactories.factory("User", ["$http", ($http) ->
  		}
 
  Search.factory("OpenSecret", ["$http", ($http) ->
- 	return{
-
+ 	return {
+ 		searchOpen: (query, callback) ->
+ 			$http.get('http://opensecrets.org/api/?method=candIndustry&cid=N00007360&cycle=2012&apikey=372c032ce003d03628fd519bd97d5f7e').success (data) ->
+ 				console.log(data)
  		};
  	])
 ])
