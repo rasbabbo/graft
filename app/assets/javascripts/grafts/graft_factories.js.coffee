@@ -10,6 +10,11 @@ GraftFactories.factory("User", ["$http", ($http) ->
 		create: (newUser) ->
 			console.log(newUser)
 			$http.post("users.json", (user: newUser))
-
  		}
+
+ Search.factory("OpenSecret", ["$http", ($http) ->
+ 	return{
+
+ 		};
+ 	])
 ])
