@@ -2,7 +2,7 @@
 <html lang="en">
     <head>
         <meta charset="utf-8">
-        <title>D3: An HTML div tooltip</title>
+        <title>Testing Bar types</title>
         <script type="text/javascript" src="./d3.js"></script>
         <style type="text/css">
 
@@ -40,7 +40,7 @@
     </head>
     <body>
         <div id="tooltip" class="hidden">
-            <p><strong>Who's Paying Who?</strong></p>
+            <p><strong>This will be the name of contributor</strong></p>
             <p><span id="value">100</span>%</p>
         </div>
         <script type="text/javascript">
@@ -66,7 +66,7 @@
                         .attr("width", w)
                         .attr("height", h);
 
-            //Create bars
+            //make bars
             svg.selectAll("rect")
                .data(dataset)
                .enter()

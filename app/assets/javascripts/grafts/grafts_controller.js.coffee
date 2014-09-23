@@ -11,13 +11,16 @@ class GraftCtrl
 		alert "Submitted"
 		@scope.id = {}
 
-		$http.get("http://opensecrets.org/api/?method=getLegislator&id=" + $scope.id + "&cycle=2012&apikey=" + @scope.apiKey + "&output=json")
+		$http.jsonp("http://opensecrets.org/api/?method=getLegislator&id=" + $scope.id + "&cycle=2012&apikey=" + @scope.apiKey + "&output=json")
 			.success (data)->
-			$scope.candidatesInfo = data
+			$scope.candidatesInfo.push(data)
+				.error()->
+					alert "Try again"
 				render "/select"
 
-	listCand: (@http, @scope, @id)->
-		@scope.
+	listCand: (@http, @scope, @cid)->
+		$http.jsonp("http://www.opensecrets.org/api/?method=candSummary&cid=" +$scope.cid+"&cycle=2012&apikey="+@scope.apiKey+"$output=json")
+		
 
 
 
