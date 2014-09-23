@@ -3,19 +3,17 @@ class Router
 	constructor: (@routeProvider, @locationProvider) ->
 		console.log("Initializing Router")
 		console.log("setting up!")
-		@routeProvider.
-			when "/",
+		@routeProvider			
+			.when "/",
 				templateUrl: "/graft_templates",
-				controller: "GraftCtrls as grafts"
+				controller: "GraftCtrl as grafts"
 			.when "/grafts",
 				templateUrl: "/graft_templates",
-				controller: "GraftCtrls as grafts"
+				controller: "GraftCtrl as grafts"
 
-			@locationProvider.html5Mode(true)
+		@locationProvider.html5Mode(true)
 
-GraftRouter = angular.module("GraftRouter", [
-	"ngRoute"
-])
+GraftRouter = angular.module("GraftRouter", ["ngRoute"])
 
 GraftRouter.config(["$routeProvider", "$locationProvider", Router])
 
