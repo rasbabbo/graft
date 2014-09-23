@@ -17,5 +17,6 @@
 //= require angular-route.min
 //= require angular-resource.min
 //= require_tree .
+//= require_tree/../templates
 
 
