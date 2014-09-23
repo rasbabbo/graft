@@ -10,6 +10,8 @@ class Router
 			.when "/grafts",
 				templateUrl: "/graft_templates",
 				controller: "GraftCtrl as grafts"
+			.otherwise
+				redirectTo: "/"
 
 		@locationProvider.html5Mode(true)
 

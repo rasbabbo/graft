@@ -1,19 +1,18 @@
-GraftCtrls = angular.module("GraftCtrls", ["ngResource"])
+GraftCtrls = angular.module("GraftCtrls", [])
 
 class GraftCtrl
 
 	constructor: (@scope)->
 		@scope.candidatesInfo = []
+		@scope.apiKey = process.env.OPEN_SECRETS
 
-	findIdbyState: (@query, @scope, @http)->
-		$http.get("http://opensecrets.org/api/?method=getLegislator&id=" + $scope.state.id + "&cycle=2012&apikey=" + process.env.OPEN_SECRETS + "&output=json")
+	findByState: (@query, @scope, @http, @id)->
+		alert "Submitted"
+		@scope.id = {}
+
+		$http.get("http://opensecrets.org/api/?method=getLegislator&id=" + $scope.id + "&cycle=2012&apikey=" + @scope.apiKey + "&output=json")
 			.success (data)->
-				$scope.candidatesInfo = data
-			# for (i = 0; i < returnVal.length; i ++)
-			# 	candSum = {}
-			# 		push.returnVal[]
-
-
+			$scope.candidatesInfo = data
 
 	sayHello: ()->
 		"come an and work"

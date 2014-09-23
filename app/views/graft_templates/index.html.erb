@@ -1,22 +1,15 @@
 {{ grafts.sayHello() }}
+{{grafts.findByState() }}
 
-<form ng-submit="id.getId(newId)">
-	<input type="text" ng-model="getId.id" ng-keyup="ids.complete(getId.id)">
-	<div ng-repeat="names in getIds"> {{legislator.firstlast}}</div>
+<button ng-click = "findByState()">Testing finbS</button>
+
+<form ng-submit="findByState(id)">
+	<input type="text" ng-model="id">
+	<button>Submit</button>
 </form>
 
 <div ng-repeat="firstlast in candidatesInfo">
 	{{firstlast}}
 </div>
 
-
-
-
-<!-- <div id="search">
-	<input ng-model="query" placeholder="find politician" ng-keyup="$event.keyCode == 13 && getId()">
-	<div class=""  ng-repeat="name in names" ng-click="openRepo(repo.full_name)">
-		<strong> {{repo.full_name}}</strong>
-		<p>{{repo.description}}</p>
-	</div>
-</div> -->
 
