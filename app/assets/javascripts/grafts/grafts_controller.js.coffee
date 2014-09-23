@@ -4,6 +4,7 @@ class GraftCtrl
 
 	constructor: (@scope)->
 		@scope.candidatesInfo = []
+		@scope.candidate = []
 		@scope.apiKey = process.env.OPEN_SECRETS
 
 	findByState: (@query, @scope, @http, @id)->
@@ -13,6 +14,14 @@ class GraftCtrl
 		$http.get("http://opensecrets.org/api/?method=getLegislator&id=" + $scope.id + "&cycle=2012&apikey=" + @scope.apiKey + "&output=json")
 			.success (data)->
 			$scope.candidatesInfo = data
+				render "/select"
+
+	listCand: (@http, @scope, @id)->
+		@scope.
+
+
+
+	chooseCand: (@http, @scope, @id)
 
 	sayHello: ()->
 		"come an and work"

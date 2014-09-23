@@ -1,15 +1,13 @@
 {{ grafts.sayHello() }}
 {{grafts.findByState() }}
 
-<button ng-click = "findByState()">Testing finbS</button>
+<button ng-click = "findByState(id)">Testing finbS</button>
 
 <form ng-submit="findByState(id)">
 	<input type="text" ng-model="id">
 	<button>Submit</button>
 </form>
 
-<div ng-repeat="firstlast in candidatesInfo">
-	{{firstlast}}
-</div>
+
 
 
