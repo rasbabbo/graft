@@ -4,7 +4,6 @@ class GraftCtrl
 
 	constructor: (@scope)->
 		@scope.candidatesInfo = []
-<<<<<<< HEAD
 		@scope.candidate = []
 		@scope.apiKey = process.env.OPEN_SECRETS
 
