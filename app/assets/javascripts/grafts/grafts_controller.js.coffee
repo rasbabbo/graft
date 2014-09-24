@@ -12,7 +12,7 @@ class GraftCtrl
 		# console.log "@http.get", @http.get
 		@http.get("/legislators/"+id+".json").success (data) =>
 			console.log(data)
-			@scope.pols = data
+			@scope.pols = data.response.legislator
 			data = @scope.candidatesInfo
 			console.log(data)
 		.error (data)->

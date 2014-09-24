@@ -1,23 +1,20 @@
 {{grafts.sayHello()}}
 
-{{grafts.candidatesInfo()}}
 
 <form ng-submit="grafts.findBy(id)">
 	<input type="text" ng-model="id">
 	<button> Submit </button>
 </form>
 
-!{{pols}}!
-	<div ng-repeat="pol in pols">
-<form ng-submit="grafts.findPers(cid)">
-		<button ng-click="grafts.findPers(cid)">
-		{{attributes.firstlast}}{{attributes.cid}}
-		</button>
-</form>
+<div ng-repeat="pol in pols">
+	<form ng-submit="grafts.findPers(cid)">
+			<button ng-click="grafts.findPers(cid)">
+			 {{pol["@attributes"].firstlast}}
+			 {{pol["@attributes"].cid}}
+			</button>
+	</form>
 </div>
 
-<!-- <div ng-repeat="pol in pols.candidatesInfo">
-	<button ng-click="grafts.findPers(cid)">{{@attributes.firstlast}}{{@attributes.cid}}</button>
-</div> -->
+
 
 
