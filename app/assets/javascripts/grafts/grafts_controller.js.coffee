@@ -12,16 +12,18 @@ class GraftCtrl
 		console.log "Blahhhh"
 		console.log "@http.get", @http.get
 		@http.get("/legislators/"+id+".json").completed (data) =>
-			console.log(results)
+			console.log (data)
 		.error (data)->
 			console.log "Try again"
+		@http.post()
 
-	# listCand: (@cid)->
-	# 	$http.jsonp("http://www.opensecrets.org/api/?method=candSummary&cid=" +@scope.cid+"&cycle=2012&apikey="+@scope.apiKey+"&output=json")			
-	# 	.success (data)->
-	# 		@scope.candidate.push(data)
-	# 			.error ()->
-	# 				alert "No worky"
+	findPers: (cid)->
+		console.log "checking person"
+		@http.get("legislator/"+cid+".json").completed (data)=>
+			console.log(data)
+		.error (data)->
+			console.log "Problem w/ search"
+			
 
 	sayHello: ()->
 		"come an and work"

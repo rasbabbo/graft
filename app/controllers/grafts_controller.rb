@@ -23,7 +23,7 @@ class GraftsController < ApplicationController
 		puts "calling individual legislator"
 		response = Typhoeus.get("http://www.opensecrets.org/api/?method=candSummary&cid="+ cid +"&cycle=2012&apikey=372c032ce003d03628fd519bd97d5f7e&output=json")
 		puts "results: " + response.body.to_s
-		render json: response
+		render json: response.body
 	end
 
 	private
