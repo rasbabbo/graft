@@ -23,7 +23,7 @@ class GraftCtrl
 			console.log(data)
 		.error (data)->
 			console.log "Problem w/ search"
-			
+
 
 	sayHello: ()->
 		"come an and work"

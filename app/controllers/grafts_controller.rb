@@ -16,14 +16,31 @@ class GraftsController < ApplicationController
 		response = Typhoeus.get("http://www.opensecrets.org/api/?method=getLegislators&id="+state_id+"&apikey=372c032ce003d03628fd519bd97d5f7e&output=json")
 		puts "results: " + response.body.to_s
 		render json: response.body
+
+		console.log(response)
+
 	end
 
-	def find_candidate_info
+	def find_legislator
 		cid = params[:cid]
 		puts "calling individual legislator"
 		response = Typhoeus.get("http://www.opensecrets.org/api/?method=candSummary&cid="+ cid +"&cycle=2012&apikey=372c032ce003d03628fd519bd97d5f7e&output=json")
 		puts "results: " + response.body.to_s
-		render json: response.body
+	end
+
+	def find_donors
+		cid = params[:cid]
+		response = Typhoeus.get("http://www.opensecrets.org/api/?method=candContrib&cid="+ cid +"&cycle=2012&apikey=372c032ce003d03628fd519bd97d5f7e&output=json")
+		puts "results: " + response.body.to_s
+	end
+
+	def find_industries
+		cid = params[:cid]
+		##note differene in capitalization of the method in this if it fails
+		response = Typhoeus.get("http://www.opensecrets.org/api/?method=CandIndByInd&cid="+ cid +"&cycle=2012&apikey=372c032ce003d03628fd519bd97d5f7e&output=json")
+		puts "results: " +response.body.to_s
+
+
 	end
 
 	private

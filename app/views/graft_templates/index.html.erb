@@ -4,11 +4,13 @@
 
 <form ng-submit="grafts.findBy(id)">
 	<input type="text" ng-model="id">
-	<button>Submit </button>
+	<button> Submit </button>
 </form>
 
-<ng-repeat="pol in pols"
-
+<form ng-submit="grafts.findPers(cid)">
+	<ng-repeat="pol in pols">
+		{{attribute.firstlast}}{{attribute.cid}}
+</form>
 
 
 
