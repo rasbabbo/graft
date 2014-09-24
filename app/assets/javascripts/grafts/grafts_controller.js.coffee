@@ -5,7 +5,6 @@ class GraftCtrl
 	constructor: (@scope, @http)->
 		@scope.candidatesInfo = []
 		@scope.candidate = []
-		@scope.apiKey = "372c032ce003d03628fd519bd97d5f7e"
 		@scope.cid = {}
 
 	findBy: (id)->
@@ -13,6 +12,8 @@ class GraftCtrl
 		console.log "@http.get", @http.get
 		@http.get("/legislators/"+id+".json").completed (data) =>
 			console.log (data)
+			data = @scope.candidatesInfo
+			console.log(data)
 		.error (data)->
 			console.log "Try again"
 
