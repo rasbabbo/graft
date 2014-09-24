@@ -5,15 +5,15 @@ class GraftCtrl
 	constructor: (@scope, @http)->
 		@scope.candidatesInfo = []
 		@scope.candidate = []
-		@scope.cid = {}
+		@scope.cid = []
 		@scope.pols = []
+
 	findBy: (id)->
 		console.log "Blahhhh"
 		# console.log "@http.get", @http.get
 		@http.get("/legislators/"+id+".json").success (data) =>
 			console.log(data)
 			@scope.pols = data.response.legislator
-			data = @scope.candidatesInfo
 			console.log(data)
 		.error (data)->
 			console.log "Try again"
@@ -22,6 +22,7 @@ class GraftCtrl
 		console.log "checking person"
 		@http.get("legislator/"+cid+".json").success (data)=>
 			console.log(data)
+			@scope.candidate = data.response
 		.error (data)->
 			console.log "Problem w/ search"
 
