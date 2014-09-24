@@ -3,5 +3,5 @@ class GraftTemplatesController < ApplicationController
 
 	def index
 	end
-	
+
 end

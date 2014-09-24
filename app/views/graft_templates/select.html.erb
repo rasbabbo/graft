@@ -1,9 +1,10 @@
 {{ grafts.sayHello() }}
 {{grafts.findByState() }}
 
-
-<div ng-repeat="firstlast in candidatesInfo" ng-model="listCand.description">
-  <button>  
-  {{candidatesInfo.firstlast}} {{candidatesInfo.cid}}
-  </button>
-</div>
+<form ng-submit"cid.listCand()">
+  <div ng-repeat="firstlast in candidatesInfo" ng-model="listCand.description">
+    <button>  
+    {{candidatesInfo.firstlast}} {{candidatesInfo.cid}}
+    </button>
+  </div>
+</form>

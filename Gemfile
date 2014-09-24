@@ -31,6 +31,8 @@ gem 'bcrypt', '~> 3.1.7'
 
 gem 'angular-rails-templates'
 
+gem 'typhoeus'
+
 group :development do
 	gem 'pry'
 	gem 'pry-rails'

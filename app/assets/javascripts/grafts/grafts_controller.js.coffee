@@ -2,31 +2,26 @@ GraftCtrls = angular.module("GraftCtrls", [])
 
 class GraftCtrl
 
-	constructor: (@scope)->
+	constructor: (@scope, @http)->
 		@scope.candidatesInfo = []
 		@scope.candidate = []
-		@scope.apiKey = process.env.OPEN_SECRETS
+		@scope.apiKey = "372c032ce003d03628fd519bd97d5f7e"
+		@scope.cid = {}
 
-	findByState: (@query, @scope, @http, @id)->
-		alert "Submitted"
-		@scope.id = {}
+	findBy: (id)->
+		console.log "Blahhhh"
+		console.log "@http.get", @http.get
+		@http.get("/legislators/"+id+".json").completed (data) =>
+			console.log(results)
+		.error (data)->
+			console.log "Try again"
 
-		$http.jsonp("http://opensecrets.org/api/?method=getLegislator&id=" + $scope.id + "&cycle=2012&apikey=" + @scope.apiKey + "&output=json")
-			.success (data)->
-			$scope.candidatesInfo.push(data)
-				.error()->
-					alert "Try again"
-				render "/select"
-
-	listCand: (@http, @scope, @cid)->
-		$http.jsonp("http://www.opensecrets.org/api/?method=candSummary&cid=" +$scope.cid+"&cycle=2012&apikey="+@scope.apiKey+"$output=json")
-		
-
-		# $http.get("http://opensecrets.org/api/?method=getLegislator&id=" + @scope.state.id + "&cycle=2012&apikey=" + process.env.OPEN_SECRETS + "&output=json")
-		# 	.success (data)->
-		# 	@scope.candidatesInfo = data
-
-	chooseCand: (@http, @scope, @id)
+	# listCand: (@cid)->
+	# 	$http.jsonp("http://www.opensecrets.org/api/?method=candSummary&cid=" +@scope.cid+"&cycle=2012&apikey="+@scope.apiKey+"&output=json")			
+	# 	.success (data)->
+	# 		@scope.candidate.push(data)
+	# 			.error ()->
+	# 				alert "No worky"
 
 	sayHello: ()->
 		"come an and work"
