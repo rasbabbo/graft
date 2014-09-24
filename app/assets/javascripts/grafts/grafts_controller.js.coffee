@@ -7,6 +7,8 @@ class GraftCtrl
 		@scope.candidate = []
 		@scope.cid = []
 		@scope.pols = []
+		@scope.donors = []
+		@scope.industries = []
 
 	findBy: (id)->
 		console.log "Blahhhh"
@@ -14,7 +16,6 @@ class GraftCtrl
 		@http.get("/legislators/"+id+".json").success (data) =>
 			console.log(data)
 			@scope.pols = data.response.legislator
-			console.log(data)
 		.error (data)->
 			console.log "Try again"
 
@@ -30,6 +31,7 @@ class GraftCtrl
 		console.log "checking data"
 		@http.get("donors/"+cid+".json").success (data)=>
 			console.log(data)
+			@scope.donors = data.response
 		.error (data)->
 			console.log "Problem w/ donor search"
 
@@ -37,6 +39,7 @@ class GraftCtrl
 		console.log "checking findInd"
 		@http.get("industries/"+cid+".json").success (data)=>
 			console.log(data)
+			@scope.industries = data.response
 		.error (data)->
 			console.log "problem w/ ind"
 

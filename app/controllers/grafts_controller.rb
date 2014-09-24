@@ -30,13 +30,15 @@ class GraftsController < ApplicationController
 	def find_donors
 		cid = params[:cid]
 		response = Typhoeus.get("http://www.opensecrets.org/api/?method=candContrib&cid="+ cid +"&cycle=2012&apikey=372c032ce003d03628fd519bd97d5f7e&output=json")
+		puts response.body
 		render json: response.body
 	end
 
 	def find_industries
 		cid = params[:cid]
 		##note differene in capitalization of the method in this if it fails 
-		response = Typhoeus.get("http://www.opensecrets.org/api/?method=CandIndByInd&cid="+ cid +"&cycle=2012&apikey=372c032ce003d03628fd519bd97d5f7e&output=json")
+		response = Typhoeus.get("http://www.opensecrets.org/api/?method=candIndustry&cid="+ cid +"&cycle=2012&apikey=372c032ce003d03628fd519bd97d5f7e&output=json")
+		puts response.body
 		render json: response.body
 	end
 
