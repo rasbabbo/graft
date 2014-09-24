@@ -15,7 +15,6 @@ class GraftCtrl
 			console.log (data)
 		.error (data)->
 			console.log "Try again"
-		@http.post()
 
 	findPers: (cid)->
 		console.log "checking person"
@@ -23,6 +22,20 @@ class GraftCtrl
 			console.log(data)
 		.error (data)->
 			console.log "Problem w/ search"
+
+	findDon: (cid)->
+		console.log "checking data"
+		@http.get("donors/"+cid+".json").completed (data)=>
+			console.log(data)
+		.error (data)->
+			console.log "Problem w/ donor search"
+
+	findInd: (cid)->
+		console.log "checking findInd"
+		@http.get("industries/"+cid+".json").completed (data)=>
+			console.log(data)
+		.error (data)->
+			console.log "problem w/ ind"
 
 
 	sayHello: ()->
