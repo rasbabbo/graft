@@ -30,6 +30,20 @@
 			<button ng-click="grafts.findInd(candidate['@attributes'].cid)">List Top Industries</button>
 	</ul>
 
+	<div ng-repeat="donor in donors">
+		<ul>
+			<li> {{donors['@attributes'].org_name}} : {{donors['@attributes'].total}} </li>
+		</ul>
+	</div>
+
+	<div ng-repeat="industry in industries">
+		<ul>
+			<li></li>
+
+		</ul>
+		
+	</div>
+
 </div>
 {{donors}}
 {{industries}}

@@ -31,7 +31,7 @@ class GraftCtrl
 		console.log "checking data"
 		@http.get("donors/"+cid+".json").success (data)=>
 			console.log(data)
-			@scope.donors = data.response
+			@scope.donors = data.response.contributors.contributor
 		.error (data)->
 			console.log "Problem w/ donor search"
 
