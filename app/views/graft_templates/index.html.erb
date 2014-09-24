@@ -1,5 +1,3 @@
-{{grafts.sayHello()}}
-
 <div>
 	<form ng-submit="grafts.findBy(id)">
 		<input type="text" ng-model="id">
@@ -13,40 +11,35 @@
 	</div>
 
 
-<div ng-show="candidate != undefined">
-	<h1>{{candidate["@attributes"].cand_name}}</h1>
-	<h1> State: {{candidate["@attributes"].state}}</h1>
-		<h2>Party: {{candidate["@attributes"].party}}</h2>
-			<h3>First Elected: {{candidate["@attributes"].first_elected}}</h3>
-			<h3>Total Contributions: {{candidate["@attributes"].total}}</h3>
-			<h3>Total Spent: {{candidate["@attributes"].spent}}</h3>
-			<h3>Cash on Hand: {{candidate["@attributes"].cash_on_hand}}</h3>
-			<h3>Total Debt: {{candidate["@attributes"].debt}}</h3>
+	<div ng-show="candidate != undefined">
+		<h1>{{candidate["@attributes"].cand_name}}</h1>
+		<h1> State: {{candidate["@attributes"].state}}</h1>
+			<h2>Party: {{candidate["@attributes"].party}}</h2>
+				<h3>First Elected: {{candidate["@attributes"].first_elected}}</h3>
+				<h3>Total Contributions: {{candidate["@attributes"].total}}</h3>
+				<h3>Total Spent: {{candidate["@attributes"].spent}}</h3>
+				<h3>Cash on Hand: {{candidate["@attributes"].cash_on_hand}}</h3>
+				<h3>Total Debt: {{candidate["@attributes"].debt}}</h3>
 
-	<ul>
-		<li>
-			<button ng-click="grafts.findDon(candidate['@attributes'].cid)">List Top Donors</button>
-		</li>
-			<button ng-click="grafts.findInd(candidate['@attributes'].cid)">List Top Industries</button>
-	</ul>
+			<div>			
+				<button ng-click="grafts.findDon(candidate['@attributes'].cid)">List Top Donors</button>
+					<div ng-repeat="donor in donors">
+						<ul>
+							<li> {{donor['@attributes'].org_name}} : {{donor['@attributes'].total}} </li>
+						</ul>
+					</div>
+			</div>
 
-	<div ng-repeat="donor in donors">
-		<ul>
-			<li> {{donor['@attributes'].org_name}} : {{donor['@attributes'].total}} </li>
-		</ul>
+			<div>
+				<button ng-click="grafts.findInd(candidate['@attributes'].cid)">List Top Industries</button>
+					<div ng-repeat="industry in industries">
+						<ul>
+							<li>{{industry['@attributes'].industry_name}} : {{industry['@attributes'].total}}</li>
+						</ul>
+					</div>			
+			</div>
+			
 	</div>
-
-	<div ng-repeat="industry in industries">
-		<ul>
-			<li>{{industry['@attributes'].industry_name}} : {{industry['@attributes'].total}}</li>
-		</ul>
-	</div>
-
-</div>
-
-
-
-
 </div>
  
 
