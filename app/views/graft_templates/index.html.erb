@@ -1,16 +1,16 @@
 {{grafts.sayHello()}}
 
 <div>
-<form ng-submit="grafts.findBy(id)">
-	<input type="text" ng-model="id">
-	<button> Submit </button>
-</form>
+	<form ng-submit="grafts.findBy(id)">
+		<input type="text" ng-model="id">
+		<button> Submit </button>
+	</form>
 
-<div ng-repeat="pol in pols">
-			<button ng-click="grafts.findPers(pol['@attributes'].cid)">
-			 {{pol["@attributes"].firstlast}}
-			</button>
-</div>
+	<div ng-repeat="pol in pols">
+				<button ng-click="grafts.findPers(pol['@attributes'].cid)">
+				 {{pol["@attributes"].firstlast}}
+				</button>
+	</div>
 
 
 <div ng-show="candidate != undefined">
@@ -32,21 +32,19 @@
 
 	<div ng-repeat="donor in donors">
 		<ul>
-			<li> {{donors['@attributes'].org_name}} : {{donors['@attributes'].total}} </li>
+			<li> {{donor['@attributes'].org_name}} : {{donor['@attributes'].total}} </li>
 		</ul>
 	</div>
 
 	<div ng-repeat="industry in industries">
 		<ul>
-			<li></li>
-
+			<li>{{industry['@attributes'].industry_name}} : {{industry['@attributes'].total}}</li>
 		</ul>
-		
 	</div>
 
 </div>
-{{donors}}
-{{industries}}
+
+
 
 
 </div>

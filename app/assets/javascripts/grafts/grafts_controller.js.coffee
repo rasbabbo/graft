@@ -39,7 +39,7 @@ class GraftCtrl
 		console.log "checking findInd"
 		@http.get("industries/"+cid+".json").success (data)=>
 			console.log(data)
-			@scope.industries = data.response
+			@scope.industries = data.response.industries.industry
 		.error (data)->
 			console.log "problem w/ ind"
 
