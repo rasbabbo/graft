@@ -7,11 +7,14 @@
 	<button> Submit </button>
 </form>
 
+
 <form ng-submit="grafts.findPers(cid)">
 	<ng-repeat="pol in pols">
 		{{attribute.firstlast}}{{attribute.cid}}
 </form>
 
-
+<div ng-repeat="pol in pols.candidatesInfo">
+	<button ng-click="grafts.findPers(cid)">{{attributes.firstlast}}{{attributes.cid}}</button>
+</div>
 
 
