@@ -9,15 +9,20 @@
 <div ng-repeat="pol in pols">
 			<button ng-click="grafts.findPers(pol['@attributes'].cid)">
 			 {{pol["@attributes"].firstlast}}
-			 {{pol["@attributes"].cid}}
 			</button>
 </div>
 
 
 <div>
-	{{candidate}}
-	{{candidate["@attributes"].cand_name}}
-	{{candidate["@attributes"].state}}
+	<h1>{{candidate["@attributes"].cand_name}}</h1>
+	<h1> State: {{candidate["@attributes"].state}}</h1>
+	<h2>Party: {{candidate["@attributes"].party}}</h2>
+	<h3>First Elected: {{candidate["@attributes"].first_elected}}</h3>
+	<h3>Total Contributions: {{candidate["@attributes"].total}}</h3>
+	<h3>Total Spent: {{candidate["@attributes"].spent}}</h3>
+	<h3>Cash on Hand: {{candidate["@attributes"].cash_on_hand}}</h3>
+	<h3>Total Debt: {{candidate["@attributes"].debt}}</h3>
+
 </div>
 
 
