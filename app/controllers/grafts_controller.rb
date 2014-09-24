@@ -14,6 +14,7 @@ class GraftsController < ApplicationController
 		state_id = params[:state_id]
 		puts "calling find_legislators with typheous"
 		response = Typhoeus.get("http://www.opensecrets.org/api/?method=getLegislators&id="+state_id+"&apikey=372c032ce003d03628fd519bd97d5f7e&output=json")
+		puts response.body
 		render json: response.body
 	end
 
@@ -21,7 +22,9 @@ class GraftsController < ApplicationController
 		cid = params[:cid]
 		puts "calling individual legislator"
 		response = Typhoeus.get("http://www.opensecrets.org/api/?method=candSummary&cid="+ cid +"&cycle=2012&apikey=372c032ce003d03628fd519bd97d5f7e&output=json")
+		puts response.body
 		render json: response.body
+
 	end
 
 	def find_donors

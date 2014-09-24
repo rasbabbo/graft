@@ -7,23 +7,22 @@
 </form>
 
 <div ng-repeat="pol in pols">
-
 			<button ng-click="grafts.findPers(pol['@attributes'].cid)">
 			 {{pol["@attributes"].firstlast}}
 			 {{pol["@attributes"].cid}}
 			</button>
-
 </div>
 
 
-
-<div ng-show"candidate">
-	{{grafts.candidate}}
+<div>
+	{{candidate}}
+	{{candidate["@attributes"].cand_name}}
+	{{candidate["@attributes"].state}}
 </div>
 
 
 </div>
  
-{{}}
+
 
 

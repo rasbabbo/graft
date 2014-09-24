@@ -22,7 +22,7 @@ class GraftCtrl
 		console.log "checking person"
 		@http.get("legislator/"+cid+".json").success (data)=>
 			console.log(data)
-			@scope.candidate = data.response
+			@scope.candidate = data.response.summary
 		.error (data)->
 			console.log "Problem w/ search"
 
