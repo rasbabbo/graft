@@ -1,6 +1,6 @@
 <div class="container-fluid">
-	<div class="row">
 
+	<div class="row">	
 		<div class="col-md-4">
 			<form ng-submit="grafts.findBy(id)">
 				<input type="text" ng-model="id">
@@ -37,20 +37,29 @@
 
 	<div class="col-md-4">			
 		<button ng-click="grafts.findDon(candidate['@attributes'].cid)">List Top Donors</button>
-			<div ng-repeat="donor in donors">
+			<div ng-repeat="(org_name, total) in donors">
 				<ul>
-					<li> {{donor['@attributes'].org_name}} : {{donor['@attributes'].total}} </li>
+					<li> {{org_name}} : {{total}} </li>
 				</ul>
 			</div>
 			<div>
 				<button ng-click="grafts.findInd(candidate['@attributes'].cid)">List Top Industries</button>
-				<div ng-repeat="industry in industries">
+				<div ng-repeat="(industry_name, total) in industries">
 					<ul>
-						<li>{{industry['@attributes'].industry_name}} : {{industry['@attributes'].total}}</li>
+						<li>{{industry_name}} : {{total}}</li>
 					</ul>
 				</div>
 			</div>			
 		</div>
+
+	<div class="row">
+		<div class="col-md-5">
+			place Donor Chart Here
+		</div>
+		<div class="col-md-5">
+			place Industry Chart Here
+		</div>
+	</div>
 
 	</div>
 </div>
