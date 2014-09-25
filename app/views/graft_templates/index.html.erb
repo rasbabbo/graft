@@ -14,7 +14,7 @@
 			</div>
 		</div>
 
-		<div="col-md-4">
+		<div class="col-md-4">
 			<div ng-show="candidate in candidates">
 				<h3> Name: {{candidate["@attributes"].cand_name}}</h3>
 				<h3> State: {{candidate["@attributes"].state}}</h3>
@@ -35,7 +35,7 @@
 		</div>
 
 
-	<div="col-md-4">			
+	<div class="col-md-4">			
 		<button ng-click="grafts.findDon(candidate['@attributes'].cid)">List Top Donors</button>
 			<div ng-repeat="donor in donors">
 				<ul>
