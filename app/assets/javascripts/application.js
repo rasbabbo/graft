@@ -12,9 +12,9 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require d3
 //= require angular.min
 //= require bootstrap.min
-//= require d3.js
 //= require angular-route.min
 //= require angular-resource.min
 //= require_tree .

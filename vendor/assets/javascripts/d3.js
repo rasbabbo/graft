@@ -1,4 +1,5 @@
 !function() {
+  console.log("Running D3")
   var d3 = {
     version: "3.4.11"
   };

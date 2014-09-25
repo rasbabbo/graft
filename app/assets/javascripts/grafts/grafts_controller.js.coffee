@@ -51,17 +51,24 @@ class GraftCtrl
 			data.response.industries.industry.forEach (item)->
 				results[item['@attributes'].industry_name] = item['@attributes'].total
 			@scope.industries = results
+			@graphChart()
 
 
 	sayHello: ()->
 		"come an and work"
 
 	graphChart:  ()=>
+		console.log "running"
 		w = 600;
 		h = 250;
 
-		dataset = @scope.industries
+		dataset = []
+		domain = []
+		for key of @scope.industries 
+			dataset.push(@scope.industries[key])
+			domain.push key
 
+		console.log(dataset)
 		xScale = d3.scale.ordinal().domain(d3.range(dataset.length)).rangeRoundBands([
 			0,
 			w
@@ -69,9 +76,11 @@ class GraftCtrl
 
 		yScale = d3.scale.linear().domain([0, d3.max(dataset)]).range([0, h])
 
-		svg = d3.select("body").append("svg").attr("width", w).attr("height", h)
+		svg = d3.select("#graph").append("svg").attr("width", w).attr("height", h)
 
-		svg.selectAll("rect").data(dataset).enter().append("rect").attr("x", (d, i) ->
+		svg.selectAll("rect")
+		.data(dataset).enter()
+		.append("rect").attr("x", (d, i) ->
 			xScale i
 		).attr("y", (d) ->
 			h - yScale(d)
@@ -79,10 +88,13 @@ class GraftCtrl
 			yScale d
 		).attr("fill", (d) ->
 			"rgb(0, 0, " + (d * 10) + ")"
-		).on("mouseover", (d) ->
+		).on("mouseover", (d, index) ->
+			console.log arguments
+			if sortOrder 
+				index = dataset.length - index - 1
 			xPosition = parseFloat(d3.select(this).attr("x")) + xScale.rangeBand() / 2
 			yPosition = parseFloat(d3.select(this).attr("y")) / 2 + h / 2
-			d3.select("#tooltip").style("left", xPosition + "px").style("top", yPosition + "px").select("#value").text d
+			d3.select("#tooltip").style("left", xPosition + "px").style("top", yPosition + "px").select("#value").text domain[index] + " :" + d 
 			d3.select("#tooltip").classed "hidden", false
 			return
 		).on("mouseout", ->
@@ -95,18 +107,19 @@ class GraftCtrl
 		sortOrder = false
 
 		sortBars = ->
-			sortOrder = not sortOrder
-			svg.selectAll("rect").sort((a, b) ->
+			sortOrder = !sortOrder
+			svg.selectAll("rect")
+			.sort( (a, b) ->
 				if sortOrder
-					d3.ascending a, b
+					return d3.ascending a, b
 				else	
-					d3.descending a, body
-			).transition().delay((d, i) ->
+					return d3.descending a, b
+			).transition()
+			.delay( (d, i) ->
 				i * 50
-			).duration(1000).attr "x", (d, i) ->
-				xScale i
-
-				return
+			).duration(1000)
+			.attr "x", (d, i) ->
+				return xScale i
 
 
 
