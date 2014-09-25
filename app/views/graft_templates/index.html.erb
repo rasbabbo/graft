@@ -3,11 +3,11 @@
 	<div class="nav-bar">
 		
 	</div>
-
+	<h2 class="title">Who's Paying for your Pol</h2>
 	<div class="row">	
 		<div class="col-md-4">
 			<form ng-submit="grafts.findBy(id)">
-				<input type="text" ng-model="id">
+				<input type="text" ng-model="id" placeholder="Enter 2 Letter State ID">
 				<button> Submit </button>
 			</form>
 
@@ -28,13 +28,13 @@
 						<dt>First Elected</dt>
 						<dd> {{candidate["@attributes"].first_elected}}</dd>
 						<dt>Total Contributions</dt>
-						<dd> {{candidate["@attributes"].total}}</dd>
+						<dd>${{candidate["@attributes"].total}}</dd>
 						<dt>Total Spent</dt>
-						<dd> {{candidate["@attributes"].spent}}</dd>
+						<dd>${{candidate["@attributes"].spent}}</dd>
 						<dt>Cash on Hand</dt>
-						<dd>{{candidate["@attributes"].cash_on_hand}}</dd>
+						<dd>${{candidate["@attributes"].cash_on_hand}}</dd>
 						<dt>Total Debt</dt>
-						<dd>{{candidate["@attributes"].debt}}</dd>
+						<dd>${{candidate["@attributes"].debt}}</dd>
 			</div>
 		</div>
 
@@ -47,7 +47,7 @@
 				</ul>
 			</div>
 			<div>
-				<button class="butt" ng-click="grafts.findInd(candidate['@attributes'].cid)">Industries</button>
+				<button class="butt" ng-click="grafts.findInd(candidate['@attributes'].cid)">	Industries</button>
 				<div ng-repeat="(industry_name, total) in industries">
 					<ul>
 						<li>{{industry_name}} : {{total}}</li>
