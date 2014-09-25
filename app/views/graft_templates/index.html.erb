@@ -1,3 +1,38 @@
+<style type="text/css">
+
+    rect:hover {
+        fill: orange;
+    }
+    
+    #tooltip {
+        position: absolute;
+        width: 200px;
+        height: auto;
+        padding: 10px;
+        background-color: white;
+        -webkit-border-radius: 10px;
+        -moz-border-radius: 10px;
+        border-radius: 10px;
+        -webkit-box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.4);
+        -moz-box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.4);
+        box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.4);
+        pointer-events: none;
+    }
+    
+    #tooltip.hidden {
+        display: none;
+    }
+    
+    #tooltip p {
+        margin: 0;
+        font-family: sans-serif;
+        font-size: 16px;
+        line-height: 20px;
+    }
+
+</style>
+
+
 <div class="container-fluid">
 
 	<div class="row">	
@@ -52,15 +87,24 @@
 			</div>			
 		</div>
 
-	<div class="row">
-		<div class="col-md-5">
-			place Donor Chart Here
-		</div>
-		<div class="col-md-5">
-			place Industry Chart Here
-		</div>
-	</div>
+		<div class="row">
 
+			<div class="col-md-5">
+				<div class="col-md-5">
+		        <div id="tooltip" class="hidden">
+	          <p><strong>Industries</strong></p>
+	          <p><span id="value">100</span>$</p>
+	      </div>
+			</div>
+
+			<div class="col-md-5">
+	     	<div id="tooltip" class="hidden">
+          <p><strong>Industries</strong></p>
+          <p><span id="value">100</span>$</p>
+      	</div>
+			</div>
+
+		</div>
 	</div>
 </div>
 
