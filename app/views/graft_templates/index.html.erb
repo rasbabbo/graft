@@ -1,46 +1,63 @@
-<div>
-	<form ng-submit="grafts.findBy(id)">
-		<input type="text" ng-model="id">
-		<button> Submit </button>
-	</form>
+<div class="container-fluid">
+	<div class="row">
 
-	<div ng-repeat="pol in pols">
-				<button ng-click="grafts.findPers(pol['@attributes'].cid)">
-				 {{pol["@attributes"].firstlast}}
-				</button>
-	</div>
+		<div class="col-md-4">
+			<form ng-submit="grafts.findBy(id)">
+				<input type="text" ng-model="id">
+				<button> Submit </button>
+			</form>
 
-
-	<div ng-show="candidate != undefined">
-		<h1>{{candidate["@attributes"].cand_name}}</h1>
-		<h1> State: {{candidate["@attributes"].state}}</h1>
-			<h2>Party: {{candidate["@attributes"].party}}</h2>
-				<h3>First Elected: {{candidate["@attributes"].first_elected}}</h3>
-				<h3>Total Contributions: {{candidate["@attributes"].total}}</h3>
-				<h3>Total Spent: {{candidate["@attributes"].spent}}</h3>
-				<h3>Cash on Hand: {{candidate["@attributes"].cash_on_hand}}</h3>
-				<h3>Total Debt: {{candidate["@attributes"].debt}}</h3>
-
-			<div>			
-				<button ng-click="grafts.findDon(candidate['@attributes'].cid)">List Top Donors</button>
-					<div ng-repeat="donor in donors">
-						<ul>
-							<li> {{donor['@attributes'].org_name}} : {{donor['@attributes'].total}} </li>
-						</ul>
-					</div>
+			<div ng-repeat="pol in pols">
+					<button ng-click="grafts.findPers(pol['@attributes'].cid)">
+					 {{pol["@attributes"].firstlast}}
+					</button>
 			</div>
+		</div>
 
+		<div="col-md-4">
+			<div ng-show="candidate in candidates">
+				<h3> Name: {{candidate["@attributes"].cand_name}}</h3>
+				<h3> State: {{candidate["@attributes"].state}}</h3>
+				<dl>
+					<dt>Party</dt> 
+					<dd>{{candidate["@attributes"].party}}</dd>
+						<dt>First Elected</dt>
+						<dd> {{candidate["@attributes"].first_elected}}</dd>
+						<dt>Total Contributions</dt>
+						<dd> {{candidate["@attributes"].total}}</dd>
+						<dt>Total Spent</dt>
+						<dd> {{candidate["@attributes"].spent}}</dd>
+						<dt>Cash on Hand</dt>
+						<dd>{{candidate["@attributes"].cash_on_hand}}</dd>
+						<dt>Total Debt</dt>
+						<dd>{{candidate["@attributes"].debt}}</dd>
+			</div>
+		</div>
+
+
+	<div="col-md-4">			
+		<button ng-click="grafts.findDon(candidate['@attributes'].cid)">List Top Donors</button>
+			<div ng-repeat="donor in donors">
+				<ul>
+					<li> {{donor['@attributes'].org_name}} : {{donor['@attributes'].total}} </li>
+				</ul>
+			</div>
 			<div>
 				<button ng-click="grafts.findInd(candidate['@attributes'].cid)">List Top Industries</button>
-					<div ng-repeat="industry in industries">
-						<ul>
-							<li>{{industry['@attributes'].industry_name}} : {{industry['@attributes'].total}}</li>
-						</ul>
-					</div>			
-			</div>
-			
+				<div ng-repeat="industry in industries">
+					<ul>
+						<li>{{industry['@attributes'].industry_name}} : {{industry['@attributes'].total}}</li>
+					</ul>
+				</div>
+			</div>			
+		</div>
+
 	</div>
 </div>
+
+
+
+
  
 
 
