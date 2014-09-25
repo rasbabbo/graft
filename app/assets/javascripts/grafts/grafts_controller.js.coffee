@@ -57,88 +57,58 @@ class GraftCtrl
 		"come an and work"
 
 	graphChart:  ()=>
-    var w = 600;
-    var h = 250;
-    
-    var dataset = @scope.industries
+		w = 600;
+		h = 250;
 
-    var xScale = d3.scale.ordinal()
-                 	 .domain(d3.range(dataset.length))
-                 	 .rangeRoundBands([0, w], 0.05);
+		dataset = @scope.industries
 
-    var yScale = d3.scale.linear()
-                   .domain([0, d3.max(dataset)])
-                   .range([0, h]);
-    
+		xScale = d3.scale.ordinal().domain(d3.range(dataset.length)).rangeRoundBands([
+			0,
+			w
+		], 0.05)
 
-    var svg = d3.select("body")
-                .append("svg")
-                .attr("width", w)
-                .attr("height", h);
+		yScale = d3.scale.linear().domain([0, d3.max(dataset)]).range([0, h])
 
-    //make bars
-    svg.selectAll("rect")
-       .data(dataset)
-       .enter()
-       .append("rect")
-       .attr("x", function(d, i) {
-            return xScale(i);
-       })
-       .attr("y", function(d) {
-            return h - yScale(d);
-       })
-       .attr("width", xScale.rangeBand())
-       .attr("height", function(d) {
-            return yScale(d);
-       })
-       .attr("fill", function(d) {
-            return "rgb(0, 0, " + (d * 10) + ")";
-       })
-       .on("mouseover", (d) ->
+		svg = d3.select("body").append("svg").attr("width", w).attr("height", h)
 
-            //Get this bar's x/y values, then augment for the tooltip
-            var xPosition = parseFloat(d3.select(this).attr("x")) + xScale.rangeBand() / 2;
-            var yPosition = parseFloat(d3.select(this).attr("y")) / 2 + h / 2;
+		svg.selectAll("rect").data(dataset).enter().append("rect").attr("x", (d, i) ->
+			xScale i
+		).attr("y", (d) ->
+			h - yScale(d)
+		).attr("width", xScale.rangeBand()).attr("height", (d) ->
+			yScale d
+		).attr("fill", (d) ->
+			"rgb(0, 0, " + (d * 10) + ")"
+		).on("mouseover", (d) ->
+			xPosition = parseFloat(d3.select(this).attr("x")) + xScale.rangeBand() / 2
+			yPosition = parseFloat(d3.select(this).attr("y")) / 2 + h / 2
+			d3.select("#tooltip").style("left", xPosition + "px").style("top", yPosition + "px").select("#value").text d
+			d3.select("#tooltip").classed "hidden", false
+			return
+		).on("mouseout", ->
+			d3.select("#tooltip").classed "hidden", true
+			return
+		).on "click", ->
+			sortBars()
+			return
 
-            //Update the tooltip position and value
-            d3.select("#tooltip")
-                .style("left", xPosition + "px")
-                .style("top", yPosition + "px")                     
-                .select("#value")
-                .text(d);
-       
-            //Show the tooltip
-            d3.select("#tooltip").classed("hidden", false);
+		sortOrder = false
 
-       )
-       .on("mouseout", () ->
-       		d3.select("#tooltip").classed("hidden", true); 
-       )
-       .on("click", () ->
-          sortBars();
-       );
+		sortBars = ->
+			sortOrder = not sortOrder
+			svg.selectAll("rect").sort((a, b) ->
+				if sortOrder
+					d3.ascending a, b
+				else	
+					d3.descending a, body
+			).transition().delay((d, i) ->
+				i * 50
+			).duration(1000).attr "x", (d, i) ->
+				xScale i
 
-    var sortOrder = false;
-    
-    var sortBars = () ->
-	    sortOrder = !sortOrder;
+				return
 
-	    svg.selectAll("rect")
-			.sort((a, b) ->
-			    if (sortOrder) {
-			        return d3.ascending(a, b);
-			    } else {
-			        return d3.descending(a, b);
-			    }
-			)
-			.transition()
-			.delay((d, i) ->
-			   return i * 50;
-			)
-			.duration(1000)
-			.attr("x", (d, i) ->
-			    return xScale(i);
-			);
+
 
            
       
