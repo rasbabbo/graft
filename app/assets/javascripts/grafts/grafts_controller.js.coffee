@@ -37,7 +37,8 @@ class GraftCtrl
 			results = {}
 			data.response.contributors.contributor.forEach (item)->
 				results[item['@attributes'].org_name] = item['@attributes'].total
-			@scope.donors= results
+			@scope.donors = results
+			@graphChartD()
 
 		.error (data)->
 			console.log "Problem w/ donor search"
@@ -66,6 +67,55 @@ class GraftCtrl
 		domain = []
 		for key of @scope.industries 
 			dataset.push(@scope.industries[key])
+			domain.push key
+
+		console.log(dataset)
+		xScale = d3.scale.ordinal().domain(d3.range(dataset.length)).rangeRoundBands([
+			0,
+			w
+		], 0.05)
+
+		yScale = d3.scale.linear().domain([0, d3.max(dataset)]).range([0, h])
+
+		svg = d3.select("#graph").append("svg").attr("width", w).attr("height", h)
+
+		svg.selectAll("rect")
+		.data(dataset).enter()
+		.append("rect").attr("x", (d, i) ->
+			xScale i
+		).attr("y", (d) ->
+			h - yScale(d)
+		).attr("width", xScale.rangeBand()).attr("height", (d) ->
+			yScale d
+		).attr("fill", (d) ->
+			"rgb(0, 0, " + (d * 10) + ")"
+		).on("mouseover", (d, index) ->
+			console.log arguments
+			if sortOrder 
+				index = dataset.length - index - 1
+			xPosition = parseFloat(d3.select(this).attr("x")) + xScale.rangeBand() / 2
+			yPosition = parseFloat(d3.select(this).attr("y")) + h / 2
+			d3.select("#tooltip").style("left", xPosition + "px").style("top", yPosition).select("#value").text domain[index] + " $" + d 
+			d3.select("#tooltip").classed "hidden", false
+			return
+		).on("mouseout", ->
+			d3.select("#tooltip").classed "hidden", true
+			return
+		).on "click", ->
+			sortBars()
+			return
+
+		sortOrder = false
+
+	graphChartD:  ()=>
+		console.log "running"
+		w = 600;
+		h = 250;
+
+		dataset = []
+		domain = []
+		for key of @scope.donors 
+			dataset.push(@scope.donors[key])
 			domain.push key
 
 		console.log(dataset)
