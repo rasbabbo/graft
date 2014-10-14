@@ -94,7 +94,7 @@ class GraftCtrl
 				index = dataset.length - index - 1
 			xPosition = parseFloat(d3.select(this).attr("x")) + xScale.rangeBand() / 2
 			yPosition = parseFloat(d3.select(this).attr("y")) + h / 2
-			d3.select("#tooltip").style("left", xPosition + "px").style("top", yPosition + "px").select("#value").text domain[index] + " :" + d 
+			d3.select("#tooltip").style("left", xPosition + "px").style("top", yPosition).select("#value").text domain[index] + " $" + d 
 			d3.select("#tooltip").classed "hidden", false
 			return
 		).on("mouseout", ->
