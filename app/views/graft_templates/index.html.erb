@@ -1,16 +1,19 @@
 <div class="container-fluid">
 
-	<div class="nav-bar">
-		<button ng-click="grafts.reset()">Reset</button>		
-	</div>
+	
+	
+	
+	<div class="row">
+		<h2 class="title">Who's Paying for your Pol</h2>
 
-	<h2 class="title">Who's Paying for your Pol</h2>
+	</div>
 
 	<div class="row">	
 		<div class="col-md-4">
 			<form ng-submit="grafts.findBy(id)">
 				<input type="text" ng-model="id" placeholder="Enter 2 Letter State ID">
 				<button> Submit </button>
+				<button ng-click="grafts.reset()">Reset</button>	
 			</form>
 
 			<div ng-repeat="pol in pols">
