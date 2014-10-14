@@ -1,7 +1,7 @@
 <div class="container-fluid">
 
 	<div class="nav-bar">
-		
+		<button ng-click="grafts.reset()">Reset</button>		
 	</div>
 
 	<h2 class="title">Who's Paying for your Pol</h2>
@@ -71,10 +71,25 @@
 	      </div>
 	     </div>
 		</div>
+	</div>
 
+	<div class="row">
+		<div class="col-md-5 col-md-offset-4">
+			<div id="graph">
+				<div ng-show="grafts.graphChartD(@scope.donors)">
+		     	<div id="tooltip" class="hidden">
+	          <p><strong>Top Donors</strong></p>
+	          <p><span id="value">100</span></p>
+	      	</div>
+	      </div>
+	     </div>
 		</div>
 	</div>
+
+
+
 </div>
+
 
 
 

@@ -10,6 +10,17 @@ class GraftCtrl
 		@scope.donors = []
 		@scope.industries = []
 
+	reset: ()->
+		@scope.candidatesInfo = []
+		@scope.candidate = []
+		@scope.cid = []
+		@scope.pols = []
+		@scope.donors = []
+		@scope.industries = []
+		@scope.id = []
+		d3.select("svg").remove();
+
+
 	findBy: (id)->
 		console.log "Blahhhh"
 		# console.log "@http.get", @http.get
