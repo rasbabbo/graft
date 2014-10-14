@@ -18,7 +18,10 @@ class GraftCtrl
 		@scope.donors = []
 		@scope.industries = []
 		@scope.id = []
-		d3.select("svg").remove();
+		d3.select("svg").remove()
+		d3.select("svg").remove()
+		d3.select("svg").remove()
+		d3.select("svg").remove()
 
 
 	findBy: (id)->
