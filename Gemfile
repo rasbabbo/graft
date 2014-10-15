@@ -38,6 +38,10 @@ gem 'rails_12factor', group: :production
 group :development do
 	gem 'pry'
 	gem 'pry-rails'
+
+ruby '2.0.0'
+
+
 end
 
 # Use unicorn as the app server
